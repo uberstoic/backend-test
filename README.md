@@ -32,7 +32,7 @@
 
 API будет доступен по адресу `http://localhost:8080`.
 
-## Краткая справка по эндпоинтам:
+## Краткая справка по эндпоинтам (localhost):
 
 Регистрация нового пользователя.
 ```bash
@@ -66,4 +66,26 @@ curl -X GET http://localhost:8080/api/v1/ads \
 ## Тесты:
 ```bash
 cd tests && go test -v 
+```
+
+## Команды для ендпоинтов через хостинг (Railway)
+
+Регистрация нового пользователя.
+```bash
+curl -X POST https://backend-test-production-b721.up.railway.app/api/v1/auth/register -H "Content-Type: application/json" -d '{"login": "biba", "password": "boba123"}'
+```
+
+Получение JWT токена.
+```bash
+curl -X POST https://backend-test-production-b721.up.railway.app/api/v1/auth/login -H "Content-Type: application/json" -d '{"login": "biba", "password": "boba123"}'
+```
+
+Создание объявления (требует Authorization: Bearer <token>).
+```bash
+curl -X POST https://backend-test-production-b721.up.railway.app/api/v1/ads -H "Content-Type: application/json" -H "Authorization: Bearer <token>" -d '{"title": "My New Ad", "text": "A great description of my ad.", "image_url": "http://example.com/image.jpg", "price": 150.50}'
+```
+
+Получение списка объявлений.
+```bash
+curl -X GET https://backend-test-production-b721.up.railway.app/api/v1/ads -H "Content-Type: application/json" -H "Authorization: Bearer <token>"
 ```
