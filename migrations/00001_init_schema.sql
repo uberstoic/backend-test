@@ -1,5 +1,3 @@
--- +goose Up
--- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     login VARCHAR(255) UNIQUE NOT NULL,
@@ -17,10 +15,6 @@ CREATE TABLE IF NOT EXISTS ads (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
--- +goose StatementEnd
 
--- +goose Down
--- +goose StatementBegin
-DROP TABLE IF EXISTS ads;
-DROP TABLE IF EXISTS users;
--- +goose StatementEnd
+-- DROP TABLE IF EXISTS ads;
+-- DROP TABLE IF EXISTS users;
