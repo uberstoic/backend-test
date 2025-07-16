@@ -18,7 +18,7 @@
 ## Запуск проекта
 
 1.  Убедитесь, что у вас установлен Docker и Docker Compose.
-2.  Создайте файл `.env` в корне проекта (можно скопировать `.env.example`) и заполните его:
+2.  Создайте файл `.env` в корне проекта и заполните его? примерно вот так:
     ```
     POSTGRES_USER=user
     POSTGRES_PASSWORD=password
@@ -61,4 +61,9 @@ curl -X POST http://localhost:8080/api/v1/ads \
 curl -X GET http://localhost:8080/api/v1/ads \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer <token>"
+```
+
+## Тесты:
+```bash
+cd tests && go test -v 
 ```
